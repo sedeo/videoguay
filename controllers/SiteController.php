@@ -54,6 +54,21 @@ class SiteController extends Controller
         ];
     }
 
+    public function actionEmail()
+    {
+        $result = Yii::$app->mailer->compose('prueba')
+            ->setFrom(Yii::$app->params['adminEmail'])
+            ->setTo('david.perez@iesdonana.org')
+            ->setSubject('Pasa la coca')
+            ->setTextBody('Pasala o te rajo')
+            //->setHtmlBody('<b>HTML content</b>')
+            ->send();
+        if (!$result) {
+            // Pues te has matao
+        }
+        return 'Hecho';
+    }
+
     /**
      * Displays homepage.
      *
